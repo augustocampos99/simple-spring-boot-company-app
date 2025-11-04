@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: @activatedProperties@
+
+  application:
+    name: company-app
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/company_db
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    testWhileIdle: true
+    validationQuery: SELECT 1
+
+  jpa:
+    show-sql: true
+
+server:
+  port: 8080
+

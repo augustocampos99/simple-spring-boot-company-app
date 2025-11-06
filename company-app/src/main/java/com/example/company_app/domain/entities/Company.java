@@ -87,7 +87,7 @@ public class Company {
 
     public Company(){}
 
-    public Company(String name, String cnpj, String description, BaseStatusEnum status, UUID idUser, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Company(String cnpj, String name, String description, BaseStatusEnum status, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.CNPJ = cnpj;
         this.name = name;
         this.description = description;

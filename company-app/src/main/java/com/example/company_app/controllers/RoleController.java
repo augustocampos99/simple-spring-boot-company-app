@@ -29,62 +29,26 @@ public class RoleController {
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getOne(@PathVariable UUID id) {
-        try {
-            var result = this.roleService.getById(id);
-            return ResponseEntity.ok(result);
-        }
-        catch(NotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-        catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+    public ResponseEntity getOne(@PathVariable UUID id) throws Exception {
+        var result = this.roleService.getById(id);
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity save(@Validated @RequestBody RoleRequestDTO request) {
-        try {
-            var result = this.roleService.save(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body(result);
-        }
-        catch(BadRequestException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-        catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+    public ResponseEntity save(@Validated @RequestBody RoleRequestDTO request) throws Exception {
+        var result = this.roleService.save(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
     @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity update(@PathVariable UUID id, @Validated @RequestBody RoleRequestDTO request) {
-        try {
-            var result = this.roleService.update(id, request);
-            return ResponseEntity.ok(result);
-        }
-        catch(BadRequestException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-        catch(NotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-        catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+    public ResponseEntity update(@PathVariable UUID id, @Validated @RequestBody RoleRequestDTO request) throws Exception {
+        var result = this.roleService.update(id, request);
+        return ResponseEntity.ok(result);
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity delete(@PathVariable UUID id) {
-        try {
-            this.roleService.delete(id);
-
-            return ResponseEntity.ok("ok");
-        }
-        catch(NotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-        catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+    public ResponseEntity delete(@PathVariable UUID id) throws Exception {
+        this.roleService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

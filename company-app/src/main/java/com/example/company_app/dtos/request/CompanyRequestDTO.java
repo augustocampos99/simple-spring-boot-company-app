@@ -3,9 +3,10 @@ package com.example.company_app.dtos.request;
 import com.example.company_app.domain.entities.Company;
 import com.example.company_app.domain.enums.BaseStatusEnum;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class CompanyRequestDTO {
-    @NotBlank(message = "name is required")
+    @NotBlank(message = "cnpj is required")
     private String cnpj;
 
     @NotBlank(message = "name is required")
@@ -14,7 +15,7 @@ public class CompanyRequestDTO {
     @NotBlank(message = "description is required")
     private String description;
 
-    @NotBlank(message = "status is required")
+    @NotNull(message = "status is required")
     private BaseStatusEnum status;
 
     public String getCnpj() {
@@ -50,13 +51,13 @@ public class CompanyRequestDTO {
     }
 
     public Company toEntity() {
-        return new Company(){{
-            cnpj = this.getCnpj().replace(".", "")
-                                .replace("-", "")
-                                .replace("/", "");
-            name = this.getName();
-            description = this.getDescription();
-            status = this.getStatus();
-        }};
+        Company company = new Company();
+        company.setCnpj(this.getCnpj().replace(".", "")
+                .replace("-", "")
+                .replace("/", ""));
+        company.setName(this.getName());
+        company.setDescription(this.getDescription());
+        company.setStatus(this.getStatus());
+        return company;
     }
 }

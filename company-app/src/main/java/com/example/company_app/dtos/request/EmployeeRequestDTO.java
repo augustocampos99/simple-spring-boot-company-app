@@ -64,13 +64,13 @@ public class EmployeeRequestDTO {
     }
 
     public Employee toEntity() {
-        return new Employee(){{
-            cpf = this.getCpf().replace(".", "").replace("-", "");
-            name = this.getName();
-            status = this.getStatus();
-            idRole = this.getIdRole();
-            idCompany = this.getIdCompany();
-        }};
+        Employee employee = new Employee();
+        employee.setCpf(this.getCpf().replace(".", "").replace("-", ""));
+        employee.setName(this.getName());
+        employee.setStatus(this.getStatus());
+        employee.setIdRole(this.getIdRole());
+        employee.setIdCompany(this.getIdCompany());
+        return employee;
     }
 
 }

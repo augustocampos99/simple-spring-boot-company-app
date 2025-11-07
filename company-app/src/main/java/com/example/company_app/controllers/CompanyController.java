@@ -1,8 +1,6 @@
 package com.example.company_app.controllers;
 
 import com.example.company_app.dtos.request.CompanyRequestDTO;
-import com.example.company_app.exceptions.BadRequestException;
-import com.example.company_app.exceptions.NotFoundException;
 import com.example.company_app.services.CompanyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/companies")
+@RequestMapping("/api/V1/companies")
 public class CompanyController {
 
     private final CompanyService companyService;

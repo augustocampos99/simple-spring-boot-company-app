@@ -1,8 +1,6 @@
 package com.example.company_app.controllers;
 
 import com.example.company_app.dtos.request.EmployeeRequestDTO;
-import com.example.company_app.exceptions.BadRequestException;
-import com.example.company_app.exceptions.NotFoundException;
 import com.example.company_app.services.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/api/V1/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -29,7 +27,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getById(UUID id) throws Exception {
+    public ResponseEntity getById(@PathVariable UUID id) throws Exception {
         var result = this.employeeService.getById(id);
         return ResponseEntity.ok(result);
     }

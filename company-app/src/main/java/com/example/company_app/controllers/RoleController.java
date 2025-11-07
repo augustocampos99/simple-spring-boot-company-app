@@ -1,8 +1,6 @@
 package com.example.company_app.controllers;
 
 import com.example.company_app.dtos.request.RoleRequestDTO;
-import com.example.company_app.exceptions.BadRequestException;
-import com.example.company_app.exceptions.NotFoundException;
 import com.example.company_app.services.RoleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/roles")
+@RequestMapping("/api/V1/roles")
 public class RoleController {
 
     private final RoleService roleService;

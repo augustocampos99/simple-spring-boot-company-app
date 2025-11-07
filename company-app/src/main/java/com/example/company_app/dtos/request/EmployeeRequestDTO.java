@@ -17,10 +17,10 @@ public class EmployeeRequestDTO {
     @NotNull(message = "status is required")
     private BaseStatusEnum status;
 
-    @NotBlank(message = "idRole is required")
+    @NotNull(message = "idRole is required")
     private UUID idRole;
 
-    @NotBlank(message = "idCompany is required")
+    @NotNull(message = "idCompany is required")
     private UUID idCompany;
 
     public String getCpf() {
